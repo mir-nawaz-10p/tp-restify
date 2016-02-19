@@ -1,4 +1,4 @@
-# Tenpearls-restify
+# tp-restify
 
 
 ## Prerequisites
