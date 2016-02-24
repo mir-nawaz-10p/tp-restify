@@ -2,7 +2,7 @@
 // Dependencies
 var winston = require('winston');
 var fs = require('fs');
-var logDirectory = __dirname + '/../log';
+var logDirectory = __dirname + '/../logs';
 fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
 
 // create logger
@@ -26,7 +26,7 @@ var logger = new (winston.Logger)({
     exceptionHandlers: [
       new winston.transports.File({ 
       	name: 'tp-restify-error-file',
-      	filename: logDirectory + '/exception-log.log' 
+      	filename: logDirectory + '/exception-logs.log' 
       }),
       new winston.transports.Console({
         timestamp: function() {
