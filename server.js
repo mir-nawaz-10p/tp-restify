@@ -10,7 +10,16 @@ require('./bootstrap/mongoose')();
 require('./routes')(server);
 
 server.pre( function(req, res, next){
-  	logger.log('info', req.headers, {url:req.url, method: req.method}, {fields:req.log.fields});
+  	logger.log('info', 
+  				'Request Info %j',
+  				req.headers,
+  				{
+  					fields: req.log.fields,
+  					details:{
+  						url:req.url,
+  						method: req.method
+				}
+			});
 	next();
 });
 

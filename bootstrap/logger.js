@@ -1,24 +1,28 @@
 'use strict';
 // Dependencies
 var winston = require('winston');
+var moment = require('moment');
 var fs = require('fs');
 var logDirectory = __dirname + '/../logs';
-fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
 
+fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
 // create logger
 var logger = new (winston.Logger)({
 	exitOnError: false,
     transports: [
       new winston.transports.File({ 
       	name: 'tp-restify-info-file',
-      	filename: logDirectory + '/info-logs.log'
+        filename: logDirectory + '/info-logs.log',
+        timestamp: function() {
+          return moment().format('MMMM Do YYYY, h:mm:ss a');
+        }
       }),
       new winston.transports.Console({
         timestamp: function() {
-          return Date.now();
+          return moment().format('MMMM Do YYYY, h:mm:ss a');
         },
         formatter: function(options) {
-          return options.timestamp() +' '+ options.level.toUpperCase() +' '+ (undefined !== options.message ? options.message : '') +
+          return options.timestamp() +' '+ options.level.toUpperCase() +' '+
             (options.meta && Object.keys(options.meta).length ? '\n\t'+ JSON.stringify(options.meta) : '' );
         }
       })
@@ -30,7 +34,7 @@ var logger = new (winston.Logger)({
       }),
       new winston.transports.Console({
         timestamp: function() {
-          return Date.now();
+          return moment().format('MMMM Do YYYY, h:mm:ss a');
         },
         formatter: function(options) {
           return options.timestamp() +' '+ options.level.toUpperCase() +' '+ (undefined !== options.message ? options.message : '') +

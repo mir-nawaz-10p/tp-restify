@@ -9,6 +9,7 @@
   "author": "Mir Nawaz",
   "license": "ISC",
   "dependencies": {
+    "moment": "^2.11.2",
     "mongoose": "^4.4.4",
     "restify": "^4.0.4",
     "winston": "^2.1.1"
