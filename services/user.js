@@ -10,7 +10,10 @@ module.exports = {
 };
 
 function save(req, res) {
-	var user = new User(req.body);	
+	var newUser = req.body;
+	newUser.created_at = Date.now();
+	newUser.updated_at = Date.now();
+	var user = new User(newUser);
 	user.save()
 	.then(function(doc){
 	   res.send(doc);
@@ -30,9 +33,10 @@ function getAll(req, res) {
 	});
 };
 
-function update(req, res, next) {
+function update(req, res) {
 	var query = {_id: req.params.id};
 	var update = req.body;
+	update.updated_at = Date.now();
 	User.findOneAndUpdate(query, update)
 	.then(function(doc){
 		res.send(doc);
