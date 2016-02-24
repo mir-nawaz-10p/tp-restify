@@ -9,18 +9,18 @@ require('./bootstrap/restify')(server);
 require('./bootstrap/mongoose')();
 require('./routes')(server);
 
-server.pre( function(req, res, next){
-  	logger.log('info', 
-  				'Request Info %j',
-  				req.headers,
-  				{
-  					fields: req.log.fields,
-  					details:{
-  						url:req.url,
-  						method: req.method
-				}
-			});
-	next();
+server.pre(function(req, res, next){
+  logger.log('info', 
+  		'Request Info %j',
+  		req.headers,
+  		{
+  			fields: req.log.fields,
+  			details:{
+  				url:req.url,
+  				method: req.method
+  		}
+  	});
+  next();
 });
 
 server.listen(8080, function () {
