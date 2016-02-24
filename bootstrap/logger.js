@@ -30,7 +30,10 @@ var logger = new (winston.Logger)({
     exceptionHandlers: [
       new winston.transports.File({ 
       	name: 'tp-restify-error-file',
-      	filename: logDirectory + '/exception-logs.log' 
+      	filename: logDirectory + '/exception-logs.log',
+        timestamp: function() {
+          return moment().format('MMMM Do YYYY, h:mm:ss a');
+        }
       }),
       new winston.transports.Console({
         timestamp: function() {
