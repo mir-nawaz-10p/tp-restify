@@ -11,7 +11,7 @@ require('./routes')(server);
 
 server.pre(function(req, res, next){
   logger.log('info', 
-  		'Request Info %j',
+  		'Request Info',
   		req.headers,
   		{
   			fields: req.log.fields,
