@@ -1,7 +1,7 @@
 'use strict';
 const authController = require('../controllers/auth');
 const userService = require('../services/user');
-const api = require('./json').version;
+const api = require('../constants/api_version').version;
 
 module.exports = (server) => {
 	server.post(api + '/users', authController.isAutenticated, userService.save);

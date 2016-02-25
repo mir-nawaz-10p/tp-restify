@@ -1,6 +1,6 @@
 'use strict';
 
 module.exports = function(server) {
-	// **** Auth Routes ******* //
-	require('./api')(server);
+	// **** User Routes ******* //
+	require('./users')(server);
 };
