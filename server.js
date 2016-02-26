@@ -1,25 +1,25 @@
 var restify = require('restify');
-var logger = require('./bootstrap/logger');
+var logger = require('./crust/bootstrap/logger');
 var server = restify.createServer({
   name: 'tp-restify',
   version: '0.0.1'
 });
 
-require('./bootstrap/restify')(server);
-require('./bootstrap/mongoose')();
-require('./routes')(server);
+require('./crust/bootstrap/restify')(server);
+require('./crust/bootstrap/mongoose')();
+require('./crust/routes')(server);
 
 server.pre(function(req, res, next){
   logger.log('info', 
-  		'Request Info',
-  		req.headers,
-  		{
-  			fields: req.log.fields,
-  			details:{
-  				url:req.url,
-  				method: req.method
-  		}
-  	});
+            'Request Info',
+            req.headers,
+            {
+            	fields: req.log.fields,
+            	details:{
+            		url:req.url,
+            		method: req.method
+            }
+            });
   next();
 });
 

@@ -3,7 +3,7 @@
 var winston = require('winston');
 var moment = require('moment');
 var fs = require('fs');
-var logDirectory = __dirname + '/../logs';
+var logDirectory = __dirname + '/../../logs';
 function date(){return moment().format('MMMM Do YYYY, h:mm:ss a');}
 var opts = {
   name: 'tp-restify-error-file',
