@@ -12,4 +12,5 @@
 - Clone repository
 - `$ npm install`
 - `$ node server.js`
+- `$ npm start`
 
